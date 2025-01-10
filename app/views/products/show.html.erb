@@ -1,5 +1,86 @@
-<h1><%= @product.name %></h1>
+<div class="product-container">
+  <div class="img">
+    <%= image_tag @product.featured_image if @product.featured_image.attached? %>
+  </div>
+  <div class="product-description">
+    <h1><%= @product.name %></h1>
+    <%= @product.description %>
+    <div class="inventory">
+      <h2>Inventory</h2>
+      <p>Available stock: <%= @product.inventory_count %></p>
+    </div>
+  </div>
+</div>
 
-<%= link_to "Back", products_path %>
-<%= link_to "Edit", edit_product_path(@product) %>
-<%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+<div class="button-container">
+  <%= link_to "Back", products_path %>
+  <%= link_to "Edit", edit_product_path(@product) %>
+  <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "delete" %>
+</div>
+
+<style>
+/* Show product page styles */
+h1 {
+  color: #343a40;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.product-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  max-width: 800px;
+}
+
+.product-description {
+  text-align: center;
+  margin: 1rem auto;
+  max-width: 800px;
+  color: #495057;
+}
+
+.img {
+  text-align: center;
+  margin: 1rem auto;
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
+
+a, button {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: blueviolet;
+  border: none;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+a:hover, button:hover {
+  background-color: violet;
+}
+
+button.delete {
+  background-color: #dc3545;
+}
+
+button.delete:hover {
+  background-color: #c82333;
+}
+
+/* Button container styles */
+.button-container {
+  text-align: center;
+  margin-top: 1rem;
+}
+</style>
