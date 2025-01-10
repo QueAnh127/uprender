@@ -85,6 +85,7 @@ production:
     <<: *default
     database: renderstore_production
     username: renderstore
+    url: <%= ENV['DATABASE_URL'] %>
     password: <%= ENV["RENDERSTORE_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
