@@ -23,53 +23,126 @@
 
     <style>
     /* General styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
-}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #343a40;
-}
+    h1, h2, h3, h4, h5, h6 {
+      color: #343a40;
+    }
 
-a {
-  color: #007bff;
-  text-decoration: none;
-}
+    a {
+      color: white;
+      text-decoration: none;
+  }
 
-a:hover {
-  text-decoration: underline;
-}
+    a:hover {
+      text-decoration: underline;
+    }
 
-/* Header styles */
-header {
-  background-color: #343a40;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
+    /* Footer styles */
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
 
-/* Footer styles */
-footer {
-  background-color: #343a40;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
+    /* Main content styles */
+    main {
+      padding: 2rem;
+    }
 
-/* Main content styles */
-main {
-  padding: 2rem;
-}
-    </style>
+    /* Login form styles */
+    .login-form {
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+
+    .login-form h1 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .login-form input[type="email"],
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 0.25rem;
+    }
+
+    .login-form button {
+      width: 100%;
+      padding: 0.5rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .login-form button:hover {
+      background-color: darkred;
+    }
+
+    /* Home button styles */
+    .home-button {
+      background-color: blueviolet;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1rem;
+      margin: 0.25rem 0;
+      cursor: pointer;
+      border-radius: 0.25rem;
+    }
+
+    .home-button:hover {
+      background-color: violet;
+    }
+  </style>
   </head>
 
   <body>
+  <nav>
+  <div class="login-form">
+    <div class="home-button">
+      <%= link_to "Home", root_path %>
+    </div>
+    <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+  </div>
+  </nav>
+
+  <main>
     <%= yield %>
+  </main>
+
+    <footer style="background-color: #343a40; color: white; padding: 1rem; text-align: center; position: fixed; width: 100%; bottom: 0;">
+      &copy; <%= Time.now.year %> Renderstore. All rights reserved.
+    </footer>
   </body>
 </html>
